@@ -1,0 +1,47 @@
+﻿@page "/studentdata"
+
+<PageTitle>Student Details</PageTitle>
+
+@using BlazorApp.Models
+@using BlazorApp.Data
+@inject StudentService StudentService
+
+<h1>Student Details</h1>
+
+<p>This component demonstrates student data from a service.</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Student ID</th>
+            <th>Student Name</th>
+            <th>Age</th>
+            <th>Email</th>
+            <th>Department</th>
+            <th>Skills</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var student in Studlists ?? Enumerable.Empty<BlazorApp.Models.Student>())
+        {
+            <tr>
+                <td>@student.StudentId</td>
+                <td>@student.StudName</td>
+                <td>@student.StudAge</td>
+                <td>@student.StudEmail</td>
+                <td>@student.StudDepartment</td>
+                <td>@student.Skills</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@code {
+    private List<BlazorApp.Models.Student>? Studlists;
+
+    protected override async Task OnInitializedAsync()
+    {
+        Studlists = await StudentService.GetStudentData();
+    }
+}
+
