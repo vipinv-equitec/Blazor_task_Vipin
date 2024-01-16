@@ -11,10 +11,10 @@ namespace BlazorApp.Data
             _dbContext = dbContext;
         }
 
-        public async Task<List<Student>> GetStudentData()
+        public async Task<List<StudentViewAllResult>> GetStudentData()
         {
-            List<Student> students = await _dbContext.Students.ToListAsync();
-            return students ?? new List<Student>();
+            List<StudentViewAllResult> students = await _dbContext.Procedures.StudentViewAllAsync();
+            return students;
         }
 
     }

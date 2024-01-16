@@ -22,7 +22,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var student in Studlists ?? Enumerable.Empty<BlazorApp.Models.Student>())
+        @foreach (var student in Studlists ?? Enumerable.Empty<BlazorApp.Models.StudentViewAllResult>())
         {
             <tr>
                 <td>@student.StudentId</td>
@@ -37,7 +37,7 @@
 </table>
 
 @code {
-    private List<BlazorApp.Models.Student>? Studlists;
+    private List<BlazorApp.Models.StudentViewAllResult>? Studlists;
 
     protected override async Task OnInitializedAsync()
     {
